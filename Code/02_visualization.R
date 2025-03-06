@@ -1,8 +1,10 @@
 # R code for visualization satllite data
+# install viridis for the colors
+install.packages("viridis")
 
 library(terra)
 library(imageRy)
-
+library(viridis)
 
 im.list() # mi da la lista di tutti i dati che sono stati caricati
 # for the whole course we will use "0" instead of "<-" beacause we do not care :)
@@ -57,6 +59,10 @@ plot(sent[[4]])
 sentdol=im.import("sentinel.dolomites") # uso parte comune e li chiamo tutti
 pairs(sentdol)
 
+#viridis, sostituisce colorRampPalette
+plot(sentdol,col=viridis(100))
+plot(sentdol,col=mako(100))
+plot(sentdol,col=cividis(100))
 
 
 
