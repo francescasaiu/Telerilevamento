@@ -63,7 +63,21 @@ pairs(sentdol)
 plot(sentdol,col=viridis(100))
 plot(sentdol,col=mako(100))
 plot(sentdol,col=cividis(100))
+nlyr(sentdol)
+ncell(sentdol)
+ncell(sentdol)*nlyr(sentdol)
 
+#LAYERS
+# 1=blue b2
+# 2=green b3
+# 3=red b4
+# 4=NIR b8
 
+im.plotRGB(sentdol, r=3, g=2, b=1)   # immagine a "colori naturali" ho assegnato ad un colore RGB la banda giusta
+im.plotRGB(sentdol, r=4, g=3, b=2) # immagine a "colori falsi/falsati", tutte le piante diventeranno rosse perchè riflettono tanto nel NIR che abbiamo messo nel rosso (layer 4)
+im.plotRGB(sentdol, r=3, g=4, b=2)
+im.multiframe(1,2)
+im.plotRGB(sentdol, r=4, g=3, b=2)
+im.plotRGB(sentdol, r=3, g=4, b=2)
 
 
