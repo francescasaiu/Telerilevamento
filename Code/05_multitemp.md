@@ -15,3 +15,5 @@ grdif = gr[[1]] - gr[[4]]
 The output will be something like:
 
 <img src = "../Pics/greenland_differences.jpeg" width = 50% />
+
+> Note: information about the Copernicus program can be found at the [Copernicus page](https://www.copernicus.eu/)
