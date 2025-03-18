@@ -1,17 +1,17 @@
 # Reporting multitemporal analysis by Markdown
 In order to perform multitemporal analysis, datasets in different times can be imported, by:
+
 ``` r
 im.list()
 gr = im.import("greenland")
 ```
 
 Once the set has been imported we can calculate the differences between different dates, as:
+
 ``` r
-grdif = gr[[1]]-gr[[4]]
+grdif = gr[[1]] - gr[[4]]
 ```
 
 The output will be something like:
-``` r
-jpeg("difgreen.jpeg")
-gr = im.import("greenland")
-```
+
+<img src = "../Pics/greenland_differences.jpeg" width = 50% />
