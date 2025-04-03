@@ -52,4 +52,41 @@ p0= im.ggplot(mato92)
 p00= im.ggplot(mato06)
 p0+p00+p1+p2
 
+#--- Solar orbiter
+im.list()
+solar=im.import( "Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg")
+solarc=im.classify(solar, num_clusters=3)
+dev.off()
+
+# p0= im.ggplot(solar)
+# p1= im.ggplot(solarc)
+# p0+p1
+
+im.multiframe(1,2)
+plot(solar)
+plot(solarc)
+dev.off()
+
+# 1 = low
+# 2 = high
+# 3 = medium
+# In terra uso funzione subst() sostituzione nomi 1,2,3
+
+solarcs=subst(solarc, c(1,3,2), c("01_low","02_medium","03_high"))
+plot(solarcs)
+
+perc=freq(solarcs)$count*100/ncell(solarcs)
+# [1] 37.92693 41.04342 21.02965
+
+# create dataframe
+class=c("01_low","02_medium","03_high")
+percs=c(38,41,21)
+tabsol=data.frame(class, percs)
+# final ggplot
+
+p1=ggplot(tabsol, aes(x=class, y=percs, fill=class, color=class)) + 
+  geom_bar(stat="identity") +
+  # ylim(c(0,100))
+  coord_flip()
+
 
