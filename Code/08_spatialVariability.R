@@ -74,9 +74,12 @@ p4 = im.ggplot(sd5a5)
 
 p1+p2+p3+p4
 
+# Variance
+var3 = sd3^2
 
+dev.off()
+plot(var3)
 
-
-
+var5 = sd5a5^2
 
 
