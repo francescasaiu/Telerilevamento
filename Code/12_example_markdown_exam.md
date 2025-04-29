@@ -10,7 +10,7 @@ library(imageRy)
 ```
 Setting the working directory and importing the data:
 ```r
-setwd("C:\Users\fsaiu\OneDrive\Immagini\incendi.jpg")
+setwd("C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO")
 fires = rast("incendi.jpg")
 plot(fires)
 fires = flip(fires)
