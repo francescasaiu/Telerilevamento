@@ -7,7 +7,7 @@ library(imageRy)
 library(viridis)
 
 im.list() # mi da la lista di tutti i dati che sono stati caricati
-# for the whole course we will use "=" instead of "<-" beacause we do not care :)
+# for the whole course we will use "=" instead of "<-" because we do not care :)
 # band 2 blue
 b2=im.import("sentinel.dolomites.b2.tif")
 
