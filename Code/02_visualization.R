@@ -1,4 +1,4 @@
-# R code for visualization satllite data
+# R code for visualization satellite data
 # install viridis for the colors
 install.packages("viridis")
 
