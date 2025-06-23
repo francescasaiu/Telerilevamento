@@ -36,7 +36,7 @@ im.ridgeline(gr, scale=1)
 im.ridgeline(gr, scale=2)
 im.ridgeline(gr, scale=2, palette="inferno")
 
-# Importing the data fron Sentinel
+# Importing the data from Sentinel
 ndvi=im.import("Sentinel2_NDVI")
 im.ridgeline(ndvi,scale=2)
 # Changing names
