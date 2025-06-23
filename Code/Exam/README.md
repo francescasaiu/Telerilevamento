@@ -27,4 +27,7 @@ flot(gview)
 ```
 This image show Italy in a typical setting, without eruptions:
 
-<img src = "../Pics/Italy.jpg"/>
+<img src = "../../Pics/Italy.jpg"/>
+
+The other images are downloaded with the same procedure as this one.
+
