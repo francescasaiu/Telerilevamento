@@ -50,8 +50,24 @@ flot(dec30)
 So2 = rast("SO2.jpg")
 flot(So2)
 
+# Plotting the images chronologically to show the evolution of the eruptive plume
+im.multiframe(2,6)
+flot(oc27)
+flot(oc28)
+flot(oc29)
+flot(oc30)
+flot(oc31)
+flot(nov4)
+flot(nov7)
+flot(nov12)
+flot(nov19)
+flot(nov25)
+flot(nov29)
+flot(dec30)
 
-# function that flips and plots the image
+
+
+# Function that flips and plots the image, to speed up the process
 flot <- function(x) {
   x=flip(x)
   plot(x)
