@@ -27,4 +27,4 @@ flot(gview)
 ```
 This image show Italy in a typical setting, without eruptions:
 
-![Italy](C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO/Italy.jpg)  #"C:\Users\fsaiu\UNI\MAGISTRALE\TELERILEVAMENTO\Italy.jpg"
+<img src = "../Pics/Italy.jpg"/>
