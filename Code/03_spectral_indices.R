@@ -12,7 +12,7 @@ im.plotRGB(mato92, r=1, g=2, b=3)
 im.plotRGB(mato92, r=2, g=1, b=3)
 im.plotRGB(mato92, r=2, g=3, b=1)
 
-# Import the 2006 image of the Mato Grosso area with Aster satellite
+# Import the 2006 image of Mato Grosso area with Aster satellite
 mato06=im.import("matogrosso_ast_2006209_lrg.jpg")
 mato06=flip(mato06)
 
