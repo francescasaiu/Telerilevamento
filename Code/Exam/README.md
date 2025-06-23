@@ -10,3 +10,21 @@ library(terra)
 library(imageRy)
 library(viridis)
 ```
+Creating a function for plotting and flipping the images at the same time:
+
+```r
+flot <- function(x) {
+  x=flip(x)
+  plot(x)
+}
+```
+Setting the working directory and importing data:
+
+``` r
+setwd("C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO")
+gview = rast("Italy.jpg")
+flot(gview)
+```
+This image show Italy in a typical setting, without eruptions:
+
+![Italy](C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO/Italy.jpg)  #"C:\Users\fsaiu\UNI\MAGISTRALE\TELERILEVAMENTO\Italy.jpg"
