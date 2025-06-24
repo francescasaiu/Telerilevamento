@@ -8,69 +8,60 @@ library(viridis) # useful for changing color ramp palette
 # Setting the working directory
 setwd("C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO")
 
-gview = rast("Italy.jpg")
-flot(gview)
+gview = flot(gview, "Italy.jpg")
 
-oc27 = rast("27-10.jpg")
-flot(oc27)
+oc27 = flot(oc27, "27-10.jpg")
 
-oc28 = rast("28-10.jpg")
-flot(oc28)
+oc28 = flot(oc28, "28-10.jpg")
 
-oc29 = rast("29-10.jpg")
-flot(oc29)
+oc29 = flot(oc29, "29-10.jpg")
 
-oc30 = rast("30-10.jpg")
-flot(oc30)
+oc30 = flot(oc30, "30-10.jpg")
 
-oc31 = rast("31-10.jpg")
-flot(oc31)
+oc31 = flot(oc31, "31-10.jpg")
 
-nov4 = rast("4-11.jpg")
-flot(nov4)
+nov4 = flot(nov4, "4-11.jpg")
 
-nov7= rast("7-11.jpg")
-flot(nov7)
+nov7 = flot(nov7, "7-11.jpg")
 
-nov12 = rast("12-11.jpg")
-flot(nov12)
+nov12 = flot(nov12, "12-11.jpg")
 
-nov19 = rast("19-11.jpg")
-flot(nov19)
+nov19 = flot(nov19, "25-11.jpg")
 
-nov25 = rast("25-11.jpg")
-flot(nov25)
+nov25 = flot(nov25, "25-11.jpg")
 
-nov29 = rast("29-11.jpg")
-flot(nov29)
+nov29 = flot(nov29, "29-11.jpg")
 
-dec30 = rast("30-12.jpg")
-flot(dec30)
+dec30 = flot(dec30, "30-12.jpg")
 
-So2 = rast("SO2.jpg")
-flot(So2)
+so2 = flot(so2, "SO2.jpg")
+
+
 
 # Plotting the images chronologically to show the evolution of the eruptive plume
 im.multiframe(2,6)
-flot(oc27)
-flot(oc28)
-flot(oc29)
-flot(oc30)
-flot(oc31)
-flot(nov4)
-flot(nov7)
-flot(nov12)
-flot(nov19)
-flot(nov25)
-flot(nov29)
-flot(dec30)
+plot(oc27)
+plot(oc28)
+plot(oc29)
+plot(oc30)
+plot(oc31)
+plot(nov4)
+plot(nov7)
+plot(nov12)
+plot(nov19)
+plot(nov25)
+plot(nov29)
+plot(dec30)
 
 
 
-# Function that flips and plots the image, to speed up the process
-flot <- function(x) {
-  x=flip(x)
+
+# Function that assigns an image to a variable, flips it and plots it, to speed up the process
+flot <- function(x,y){
+  x = rast(y)
+  x = flip(x)
   plot(x)
+  return(x)
 }
 
 
