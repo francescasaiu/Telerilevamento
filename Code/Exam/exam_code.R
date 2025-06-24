@@ -39,7 +39,7 @@ so2 = flot(so2, "SO2.jpg")
 
 
 # Plotting the images chronologically to show the evolution of the eruptive plume
-im.multiframe(2,6)
+im.multiframe(3,4)
 plot(oc27)
 plot(oc28)
 plot(oc29)
@@ -53,6 +53,20 @@ plot(nov25)
 plot(nov29)
 plot(dec30)
 
+# non mi piace, forse devo fare la sottrazione, domani ci provo
+im.multiframe(3,4)
+plot(oc27[[1]], col=viridis(100))
+plot(oc28[[1]], col=viridis(100))
+plot(oc29[[1]], col=viridis(100))
+plot(oc30[[1]], col=viridis(100))
+plot(oc31[[1]], col=viridis(100))
+plot(nov4[[1]], col=viridis(100))
+plot(nov7[[1]], col=viridis(100))
+plot(nov12[[1]], col=viridis(100))
+plot(nov19[[1]], col=viridis(100))
+plot(nov25[[1]], col=viridis(100))
+plot(nov29[[1]], col=viridis(100))
+plot(dec30[[1]], col=viridis(100))
 
 
 
