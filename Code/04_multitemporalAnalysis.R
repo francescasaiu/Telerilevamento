@@ -40,7 +40,7 @@ im.ridgeline(gr, scale=2, palette="inferno")
 ndvi=im.import("Sentinel2_NDVI")
 im.ridgeline(ndvi,scale=2)
 # Changing names
-names(ndvi)=c("02_Feb","05_May","08_Aug","11_Nov")
+names(ndvi)=c("21_Feb","21_May","01_Aug","27_Nov")
 # Names
 #Sentinel2_NDVI_2020-02-21.tif  
 #Sentinel2_NDVI_2020-05-21.tif  
