@@ -29,5 +29,5 @@ This image shows Italy in a typical setting, without eruptions:
 
 <img src = "../../Pics/Italy.jpg"/>
 
-The other images are downloaded with the same procedure as this one.
+>The other images are downloaded with the same procedure as this one.
 
