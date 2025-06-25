@@ -25,7 +25,7 @@ setwd("C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO")
 gview = rast("Italy.jpg")
 flot(gview)
 ```
-This image show Italy in a typical setting, without eruptions:
+This image shows Italy in a typical setting, without eruptions:
 
 <img src = "../../Pics/Italy.jpg"/>
 
