@@ -1,4 +1,4 @@
-# Code part for the exam: Analysis of Etna's plume and sulfur dioxide in atmosphere
+# Code part for the exam: Analysis of the vegetation around Mount Etna and sulfur dioxide in atmosphere
 
 # Packages
 library(terra)   # for spatial data analysis
@@ -10,53 +10,43 @@ setwd("C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO")
 
 gview = flot(gview, "Italy.jpg")
 
-oc27 = flot(oc27, "27-10.jpg")
+et24 = flot(et24, "Mount_Etna_plumes.jpg")
 
-oc29 = flot(oc29, "29-10.jpg")
+et25 = flot(et24, "Mount_Etna_erupts.jpg")
 
-oc30 = flot(oc30, "30-10.jpg")
+ndvi24 = flot(ndvi24, "NDVI-24.jpg")
 
-oc31 = flot(oc31, "31-10.jpg")
+ndvi25 = flot(ndvi25, "NDVI-25.jpg")
 
-nov4 = flot(nov4, "4-11.jpg")
+so2.24 = flot(so2_24, "SO2-2024.jpg")
 
-nov7 = flot(nov7, "7-11.jpg")
-
-nov12 = flot(nov12, "12-11.jpg")
-
-dec30 = flot(dec30, "30-12.jpg")
-
-so2_02 = flot(so2_02, "SO2.jpg")
-
-so2_24 = flot(so2_24, "SO2-2024.jpg")
-
-so2_25 = flot(so2_25, "SO2-2025.jpg")
+so2.25 = flot(so2_25, "SO2-2025.jpg")
 
 
-# Plotting the images chronologically to show the evolution of the eruptive plume
-im.multiframe(2,3)
-plot(oc27)
-plot(oc29)
-plot(oc30)
-plot(nov7)
-plot(nov12)
-plot(dec30)
-# we can see that the eruptive column tends to be transported by the wind and seems to follow a circular path, on November 29th it begins to wane and on December 30th its practically gone
+# Plotting the images in true colors one besides the other to show the differences, chronologically
+im.multiframe(3,2)
+im.plotRGB(et24, r=1, g=2, b=3, title="4 August 2024")
+im.plotRGB(et25, r=1, g=2, b=3, title="2 June 2025")
 
-# 
-im.multiframe(3,4)
-plot(oc27[[1]], col=cividis(100))
-colindex = oc27[[1]]-oc27[[3]]
-plot(colindex)
+# Plotting the images in false colors one besides the other to show the differences in vegetation health, the more dark the green is the more healty is the vegetation, chronologically
+im.plotRGB(ndvi24, r=1, g=2, b=3, title="9 August 2024")
+im.plotRGB(ndvi25, r=1, g=2, b=3, title="31 May 2025")
+
+# Plotting images of the different emission of sulfur dioxide between the two explosions, chronologically
+im.plotRGB(so2.24, r=1, g=2, b=3, title="4 August 2024")
+im.plotRGB(so2.25, r=1, g=2, b=3, title="2 June 2025")
+
+
+
 
 
 
 # Function that assigns an image to a variable, flips it and plots it, to speed up the process
 flot <- function(x,y){
-  x = rast(y)
-  x = flip(x)
+  x = rast(y)  # assignes the image to a variable
+  x = flip(x)  # flipping image
   plot(x)
-  return(x)
+  return(x)    # the function has as an output the flipped image
 }
 
 
