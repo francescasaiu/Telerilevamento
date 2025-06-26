@@ -14,9 +14,9 @@ et24 = flot(et24, "Mount_Etna_plumes.jpg")
 
 et25 = flot(et24, "Mount_Etna_erupts.jpg")
 
-ndvi24 = flot(ndvi24, "NDVI-24.jpg")
+fc24 = flot(ndvi24, "fc-24.jpg")
 
-ndvi25 = flot(ndvi25, "NDVI-25.jpg")
+fc25 = flot(ndvi25, "fc-25.jpg")
 
 so2.24 = flot(so2_24, "SO2-2024.jpg")
 
@@ -28,15 +28,31 @@ im.multiframe(3,2)
 im.plotRGB(et24, r=1, g=2, b=3, title="4 August 2024")
 im.plotRGB(et25, r=1, g=2, b=3, title="2 June 2025")
 
-# Plotting the images in false colors one besides the other to show the differences in vegetation health, the more dark the green is the more healty is the vegetation, chronologically
-im.plotRGB(ndvi24, r=1, g=2, b=3, title="9 August 2024")
-im.plotRGB(ndvi25, r=1, g=2, b=3, title="31 May 2025")
+# Plotting the images in false colors one besides the other, chronologically
+im.plotRGB(fc24, r=1, g=2, b=3, title="9 August 2024")
+im.plotRGB(fc25, r=1, g=2, b=3, title="31 May 2025")
 
 # Plotting images of the different emission of sulfur dioxide between the two explosions, chronologically
 im.plotRGB(so2.24, r=1, g=2, b=3, title="4 August 2024")
 im.plotRGB(so2.25, r=1, g=2, b=3, title="2 June 2025")
 
+# Calculation of Difference Vegetation Index (DVI)
+# 1 = B8 NIR
+# 2 = B4 red
+# 3 = B3 green
 
+# From true color images we can see that between August 2024 and June 2025, vegetation seems to be restored, that's because they show two different moments of the year, respectively beginning and the end of summer
+# With false colors it's possible to subtract NIR band layer with the red band layer obtaining a DVI range
+# maximum: NIR - red = 255 - 0 = 255
+# minimum: NIR - red = 0 - 255 = -255
+# Calculating dvi for 2024
+dvi24 = fc24[[1]] - fc24[[2]] # NIR - red
+plot(dvi24)
+plot(dvi24, col=inferno(100))
+
+im.multiframe(1,2)
+plot(dvi1992, col=inferno(100))
+plot(dvi2006, col=inferno(100))
 
 
 
