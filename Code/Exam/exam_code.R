@@ -45,14 +45,23 @@ im.plotRGB(so2.25, r=1, g=2, b=3, title="2 June 2025")
 # With false colors it's possible to subtract NIR band layer with the red band layer obtaining a DVI range
 # maximum: NIR - red = 255 - 0 = 255
 # minimum: NIR - red = 0 - 255 = -255
+
 # Calculating dvi for 2024
 dvi24 = fc24[[1]] - fc24[[2]] # NIR - red
 plot(dvi24)
-plot(dvi24, col=inferno(100))
+plot(dvi24, col=cividis(100))
 
+# Calculating dvi for 2025
+dvi25 = fc25[[1]] - fc25[[2]] # NIR - red
+plot(dvi25)
+plot(dvi25, col=cividis(100))
+
+# Plotting the results side to side
 im.multiframe(1,2)
-plot(dvi1992, col=inferno(100))
-plot(dvi2006, col=inferno(100))
+plot(dvi24, col=cividis(100))
+plot(dvi25, col=cividis(100))
+
+# spiega cos'è ndvi e come si calcola, a domani, ciaoooo
 
 
 
