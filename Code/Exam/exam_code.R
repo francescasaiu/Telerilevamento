@@ -117,7 +117,7 @@ flot <- function(x,y){
   x = rast(y)  # creates a variable that contains the image
   x = flip(x)  # flipping image
   plot(x)
-  return(x)    # the function outputs the rotated image
+  return(x)    # outputs the rotated image
 }
 
 
