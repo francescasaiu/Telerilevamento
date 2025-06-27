@@ -97,7 +97,16 @@ dev.off()
 plot(ndvi24, ndvi25, xlim=c(-0.3,0.9), ylim=c(-0.3, 0.9))
 abline(0, 1, col="#6600ff", lwd=2)
 
-# Creating a graphic with the results
+
+---
+# Creating collages with graphics with results and images for markdown script
+# True color images nest to each other
+jpeg("Etnas-eruptions")
+im.multiframe(1,2)
+im.plotRGB(et24, r=1, g=2, b=3, title="4 August 2024")
+im.plotRGB(et25, r=1, g=2, b=3, title="2 June 2025")
+dev.off()
+# NDVI
 getwd()
 pdf("ndviout")
 im.multiframe(2,2)
@@ -106,6 +115,8 @@ plot(dvi25, col=cividis(100))
 plot(ndvi24, ndvi25, xlim=c(-0.3,0.9), ylim=c(-0.3, 0.9), ylab="June 2025", xlab="August 2024")
 abline(0, 1, col="#6600ff", lwd=2)
 dev.off()
+
+
 ---
 # SO2 differenza
 
