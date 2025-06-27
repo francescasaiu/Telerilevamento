@@ -36,7 +36,7 @@ im.plotRGB(fc25, r=1, g=2, b=3, title="31 May 2025")
 im.plotRGB(so2.24, r=1, g=2, b=3, title="4 August 2024")
 im.plotRGB(so2.25, r=1, g=2, b=3, title="2 June 2025")
 dev.off()  # closes the multiframe window, helps to control graphic devices
-
+---
 # Calculation of Difference Vegetation Index (DVI)
 # 1 = B8 NIR
 # 2 = B4 red
@@ -80,7 +80,7 @@ im.multiframe(1,2)
 plot(ndvi24, col=cividis(100))
 plot(dvi25, col=cividis(100))
 dev.off()
-
+***
 # Using imageRy this process is faster and it only needs two functions, here is an example
 dvi24auto = im.dvi(fc24, 1, 2)
 plot(dvi24auto, col=cividis(100))
@@ -92,9 +92,23 @@ im.multiframe(1,2)
 plot(ndvi24, col=cividis(100))
 plot(ndvi24auto, col=cividis(100))
 dev.off()
+***
+# 
+plot(ndvi24, ndvi25, xlim=c(-0.3,0.9), ylim=c(-0.3, 0.9))
+abline(0, 1, col="#6600ff", lwd=2)
 
-# grafico ndvi, esportarlo pure
+# Creating a graphic with the results
+getwd()
+pdf("ndviout")
+im.multiframe(2,2)
+plot(ndvi24, col=cividis(100))
+plot(dvi25, col=cividis(100))
+plot(ndvi24, ndvi25, xlim=c(-0.3,0.9), ylim=c(-0.3, 0.9), ylab="June 2025", xlab="August 2024")
+abline(0, 1, col="#6600ff", lwd=2)
+dev.off()
+---
 # SO2 differenza
+
 # classificazione per intensità SO2 se ci riesco
 #
 
