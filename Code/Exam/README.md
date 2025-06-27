@@ -24,8 +24,7 @@ Setting the working directory and importing data:
 
 ``` r
 setwd("C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO")
-gview = rast("Italy.jpg")
-flot(gview)
+gview = flot(gview, "Italy.jpg")
 ```
 This image shows Italy in a typical setting, without eruptions:
 
@@ -33,5 +32,6 @@ This image shows Italy in a typical setting, without eruptions:
 
 >The other images are downloaded with the same procedure as this one.
 
-During the eruptions Mt.Etna looks like theese two images in true colors:
+During the eruptions Mt. Etna looks like theese two images in true colors:
+
 <img src = "../../Pics/Mount_Etna_plumes.jpg" width = 50%/><img src = "../../Pics/Mount_Etna_erupts.jpg" width = 50%/>
