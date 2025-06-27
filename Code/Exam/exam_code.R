@@ -95,7 +95,7 @@ dev.off()
 
 # grafico ndvi, esportarlo pure
 # SO2 differenza
-# classificazione (?)
+# classificazione per intensità SO2 se ci riesco
 #
 
 # Function that assigns an image to a variable, flips it and plots it, to speed up the process
