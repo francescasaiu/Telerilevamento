@@ -101,14 +101,14 @@ abline(0, 1, col="#6600ff", lwd=2)
 ---
 # Creating collages with graphics with results and images for markdown script
 # True color images nest to each other
-jpeg("Etnas-eruptions")
+pdf("Etnas-eruptions.pdf")
 im.multiframe(1,2)
 im.plotRGB(et24, r=1, g=2, b=3, title="4 August 2024")
 im.plotRGB(et25, r=1, g=2, b=3, title="2 June 2025")
 dev.off()
 # NDVI
 getwd()
-pdf("ndviout")
+pdf("ndviout.pdf")
 im.multiframe(2,2)
 plot(ndvi24, col=cividis(100))
 plot(dvi25, col=cividis(100))
