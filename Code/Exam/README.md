@@ -1,21 +1,23 @@
 # Analysis of Mt. Etna's eruption
-This presentation is based on Sicily's Mt. Etna's eruption, began on October 27 of the year 2002. It did not stop erupting until January 29, three months later. Here will be represented the evolution of the eruptive plum and the emission of sulfur dioxide.
+This presentation is based on the latest Sicily's Mt. Etna's eruptions; it will show, especially, the differences recorded during two eruptions happened within a year of each other, in August 2024 and June 2025. Some of the parameters that will be analysed are the NDVI (Normal Difference Vegetation Index) and the difference of sulfur dioxide emission.
 ## Data gathering
 All data are gathered from [Google Earth](https://earth.google.it), [Earth Observatory site](https://earthobservatory.nasa.gov/) and [Copernicus Data Space Ecosystem site](https://dataspace.copernicus.eu/explore-data/data-collections/sentinel-data/sentinel-2).
 
 Used packages:
 
 ``` r
-library(terra)
-library(imageRy)
-library(viridis)
+library(terra)   # for spatial data analysis
+library(imageRy) # to analyze raster images with R
+library(viridis) # useful for changing color ramp palette
 ```
 Creating a function for plotting and flipping the images at the same time:
 
 ```r
-flot <- function(x) {
-  x=flip(x)
+flot <- function(x,y){
+  x = rast(y)  # creates a variable that contains the image
+  x = flip(x)  # flipping image
   plot(x)
+  return(x)    # outputs the rotated image
 }
 ```
 Setting the working directory and importing data:
@@ -31,3 +33,5 @@ This image shows Italy in a typical setting, without eruptions:
 
 >The other images are downloaded with the same procedure as this one.
 
+During the eruptions Mt.Etna looks like theese two images in true colors:
+<img src = "../../Pics/Mount_Etna_plumes.jpg" width = 55%/><img src = "../../Pics/Mount_Etna_erupts.jpg" width = 45%/>
