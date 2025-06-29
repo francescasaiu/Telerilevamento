@@ -17,7 +17,7 @@ im.multiframe(1,2)
 plot(EN_01)
 plot(EN_13)
 
-# differenza  della concentrazione di azoto tra le due immagini
+# differenza della concentrazione di azoto tra le due immagini
 ENdiff=EN_01[[1]]-EN_13[[1]]
 plot(ENdiff)
 plot(ENdiff, col=inferno(100))
