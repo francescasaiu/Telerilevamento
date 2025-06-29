@@ -1,9 +1,10 @@
 # Code part for the exam: Analysis of the vegetation around Mount Etna and sulfur dioxide in atmosphere
 
 # Packages
-library(terra)   # for spatial data analysis
-library(imageRy) # to analyze raster images with R
-library(viridis) # useful for changing color ramp palette
+library(terra)      # for spatial data analysis
+library(imageRy)    # to analyze raster images with R
+library(viridis)    # useful for changing color ramp palette
+library(patchwork)  #
 
 # Setting the working directory
 setwd("C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO")
@@ -19,20 +20,28 @@ fc24 = flot(ndvi24, "fc-24.jpg")
 
 fc25 = flot(ndvi25, "fc-25.jpg")
 
+so2d24= flot(so2d24, "2024_so2d.jpg")
+
+so2d25 = flot(so2d25, "2025_so2d.jpg")
+
 so2.24 = flot(so2_24, "SO2-2024.jpg")
 
 so2.25 = flot(so2_25, "SO2-2025.jpg")
 
-# Plotting the images in true colors one besides the other to show the differences, chronologically
-im.multiframe(3,2)
+# Plotting images in true colors one besides the other to show the differences, chronologically
+im.multiframe(4,2)
 im.plotRGB(et24, r=1, g=2, b=3, title="4 August 2024")
 im.plotRGB(et25, r=1, g=2, b=3, title="2 June 2025")
 
-# Plotting the images in false colors one besides the other, chronologically
+# Plotting images in false colors one besides the other, chronologically
 im.plotRGB(fc24, r=1, g=2, b=3, title="9 August 2024")
 im.plotRGB(fc25, r=1, g=2, b=3, title="31 May 2025")
 
-# Plotting images of the different emission of sulfur dioxide between the two explosions, chronologically
+# Plotting images that schematically represents emission of sulfur dioxide between the two paroxysms, chronologically
+im.plotRGB(so2d24, r=1, g=2, b=3, title="4 August 2024")
+im.plotRGB(so2d25, r=1, g=2, b=3, title="2 June 2025")
+
+# Plotting images of sulfur dioxide emission for analisys, chronologically
 im.plotRGB(so2.24, r=1, g=2, b=3, title="4 August 2024")
 im.plotRGB(so2.25, r=1, g=2, b=3, title="2 June 2025")
 dev.off()  # closes the multiframe window, helps to control graphic devices
@@ -109,6 +118,8 @@ dev.off()
 
 ---
 # Using the other set of images, showing sulfur dioxide emission, it is possible to calculate the different quantity of product considering only one band
+# It is possible to see the sulfur dioxide plume of the year 2024 in darker colors and with the brighter colors this years plume.
+# Both plumes' spreading are affected by the presence or absence of the wind, in fact they do not follow the same path
 so2d = so2.25[[1]] - so2.24[[1]]
 im.multiframe(2,2)
 plot(so2.24, col=cividis(100))
@@ -116,6 +127,19 @@ plot(so2.25, col=cividis(100))
 plot(so2d, col=cividis(100))
 dev.off()
 
+# Calculating how far the values deviate from their average using the latter variable
+sd = focal(so2d, w=c(3,3), fun="sd")            # standard deviation (sd) with 3x3 pixels moving window
+sd24 = focal(so2.24[[1]], w=c(3,3), fun="sd")
+sd25 = focal(so2.25[[1]], w=c(3,3), fun="sd")
+p0 = im.ggplot(sd)                              # plotting sd with a ggplot graphic
+p1 = im.ggplot(sd24)
+p2 = im.ggplot(sd25)
+p0+p1+p2                                        # using package "patchwork", plotting the graphics one beside the other
+
+# From standard deviation should be easy to extrapolate the variance index, sum of the square deviations divided by the number of deviations
+var = sd^2
+p4 = im.ggplot(var)
+p0+p1+p2+p4                                     # using package "patchwork", plotting the graphics one beside the other
 
 # classificazione per intensità SO2 se ci riesco tipo sole
 
