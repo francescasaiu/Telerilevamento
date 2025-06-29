@@ -36,6 +36,7 @@ im.plotRGB(fc25, r=1, g=2, b=3, title="31 May 2025")
 im.plotRGB(so2.24, r=1, g=2, b=3, title="4 August 2024")
 im.plotRGB(so2.25, r=1, g=2, b=3, title="2 June 2025")
 dev.off()  # closes the multiframe window, helps to control graphic devices
+
 ---
 # Calculation of Difference Vegetation Index (DVI)
 # 1 = B8 NIR
@@ -80,6 +81,10 @@ im.multiframe(1,2)
 plot(ndvi24, col=cividis(100))
 plot(dvi25, col=cividis(100))
 dev.off()
+
+# Calculating the difference between the two NDVI, 2025-2024
+ndvidiff = ndvi25 - ndvi24
+
 ***
 # Using imageRy this process is faster and it only needs two functions, here is an example
 dvi24auto = im.dvi(fc24, 1, 2)
@@ -93,36 +98,40 @@ plot(ndvi24, col=cividis(100))
 plot(ndvi24auto, col=cividis(100))
 dev.off()
 ***
-# 
-plot(ndvi24, ndvi25, xlim=c(-0.3,0.9), ylim=c(-0.3, 0.9))
-abline(0, 1, col="#6600ff", lwd=2)
 
+# To directly compare NDVI values between the two dates, results are plotted in a cartesian graph and it is added a bisector for reference
+# x = 2024, y = 2025, if x = y NDVI has not changed within the time period
+# All values above the bisector indicate an improvement of vegetation wellness, all below instead show worsening conditions
+# In this case the majority of data is located upon the line and that means that the vegetation is more lush and dense than 2024, as per above 
+plot(ndvi24, ndvi25, xlim=c(-0.3,0.9), ylim=c(-0.3, 0.9), ylab="June 2025", xlab="August 2024")  # graph
+abline(0, 1, col="#6600ff", lwd=2)                                                               # bisector
+dev.off()
+
+---
+# Using the other set of images, showing sulfur dioxide emission, it is possible to calculate the different quantity of product considering only one band
+so2d = so2.25[[1]] - so2.24[[1]]
+im.multiframe(2,2)
+plot(so2.24, col=cividis(100))
+plot(so2.25, col=cividis(100))
+plot(so2d, col=cividis(100))
+dev.off()
+
+
+# classificazione per intensità SO2 se ci riesco tipo sole
 
 ---
 # Creating collages with graphics with results and images for markdown script
-# True color images nest to each other
-pdf("Etnas-eruptions.pdf")
-im.multiframe(1,2)
-im.plotRGB(et24, r=1, g=2, b=3, title="4 August 2024")
-im.plotRGB(et25, r=1, g=2, b=3, title="2 June 2025")
-dev.off()
 # NDVI
-getwd()
 pdf("ndviout.pdf")
 im.multiframe(2,2)
 plot(ndvi24, col=cividis(100))
 plot(dvi25, col=cividis(100))
+plot(ndvidiff, col=cividis(100))
 plot(ndvi24, ndvi25, xlim=c(-0.3,0.9), ylim=c(-0.3, 0.9), ylab="June 2025", xlab="August 2024")
 abline(0, 1, col="#6600ff", lwd=2)
 dev.off()
 
-
 ---
-# SO2 differenza
-
-# classificazione per intensità SO2 se ci riesco
-#
-
 # Function that assigns an image to a variable, flips it and plots it, to speed up the process
 flot <- function(x,y){
   x = rast(y)  # creates a variable that contains the image
