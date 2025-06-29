@@ -142,6 +142,18 @@ p4 = im.ggplot(var)
 p0+p1+p2+p4                                     # using package "patchwork", plotting the graphics one beside the other
 
 # classificazione per intensità SO2 se ci riesco tipo sole
+#
+so2d24c = im.classify(so2d24, num_clusters=4)
+so2d25c = im.classify(so2d25, num_clusters=4)
+
+#
+im.multiframe(2,2)
+plot(so2d24)
+plot(so2d24c)
+plot(so2d25)
+plot(so2d25c)
+
+#
 
 ---
 # Creating collages with graphics with results and images for markdown script
