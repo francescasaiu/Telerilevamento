@@ -132,16 +132,24 @@ dev.off()
 sd = focal(so2d, w=c(3,3), fun="sd")            # standard deviation (sd) with 3x3 pixels moving window
 sd24 = focal(so2.24[[1]], w=c(3,3), fun="sd")
 sd25 = focal(so2.25[[1]], w=c(3,3), fun="sd")
-p0 = im.ggplot(sd)                              # plotting sd with a ggplot graphic
-p1 = im.ggplot(sd24)
-p2 = im.ggplot(sd25)
-p0+p1+p2                                        # using package "patchwork", plotting the graphics one beside the other
 
 # From standard deviation should be easy to extrapolate the variance index, sum of the square deviations divided by the number of deviations
 var = sd^2
-p4 = im.ggplot(var)
-p0+p1+p2+p4                                     # using package "patchwork", plotting the graphics one beside the other
 
+# Changing names to distinguish the graphics
+names(sd)="Total standard deviation"
+names(sd24)="Standard deviation year 2024"
+names(sd25)="Standard deviation year 2025"
+names(var)="Total variance"
+
+p0 = im.ggplot(sd)                              # plotting sd with a ggplot graphic
+p1 = im.ggplot(sd24)
+p2 = im.ggplot(sd25)
+p3 = im.ggplot(var)                            # plotting vat with a ggplot graphic
+
+p0+p1+p2+p3                                   # using package "patchwork", plotting all the graphics one beside the other
+
+#---
 # Classification by intensity of sulfur dioxide plume
 so2d24c = im.classify(so2d24, num_clusters=4)
 so2d25c = im.classify(so2d25, num_clusters=4)
@@ -158,6 +166,7 @@ plot(so2d24)
 plot(so2d24c)
 plot(so2d25)
 plot(so2d25c)
+dev.off()
 
 # Making a correct legend
 so2d24cs = subst(so2d24c, c(3,2,4,1), c("01_low","02_medium-low","03_medium-high", "04_high"))
@@ -201,7 +210,7 @@ abline(0, 1, col="#6600ff", lwd=2)
 dev.off()
 
 # Sulfur dioxide classification
-png("class_24.png", width=700, height=400)  # with "width" and "height", the image can be resized
+png("class_24.png", width=700, height=400)
 plot(so2d24cs)
 dev.off()
 png("class_25.png", width=700, height=400)
