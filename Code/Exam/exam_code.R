@@ -5,6 +5,7 @@ library(terra)      # for spatial data analysis
 library(imageRy)    # to analyze raster images with R
 library(viridis)    # useful for changing color ramp palette
 library(patchwork)  #
+library(ggplot2)    #
 
 # Setting the working directory
 setwd("C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO")
@@ -46,7 +47,7 @@ im.plotRGB(so2.24, r=1, g=2, b=3, title="4 August 2024")
 im.plotRGB(so2.25, r=1, g=2, b=3, title="2 June 2025")
 dev.off()  # closes the multiframe window, helps to control graphic devices
 
----
+#---
 # Calculation of Difference Vegetation Index (DVI)
 # 1 = B8 NIR
 # 2 = B4 red
@@ -94,7 +95,7 @@ dev.off()
 # Calculating the difference between the two NDVI, 2025-2024
 ndvidiff = ndvi25 - ndvi24
 
-***
+#***
 # Using imageRy this process is faster and it only needs two functions, here is an example
 dvi24auto = im.dvi(fc24, 1, 2)
 plot(dvi24auto, col=cividis(100))
@@ -106,7 +107,7 @@ im.multiframe(1,2)
 plot(ndvi24, col=cividis(100))
 plot(ndvi24auto, col=cividis(100))
 dev.off()
-***
+#***
 
 # To directly compare NDVI values between the two dates, results are plotted in a cartesian graph and it is added a bisector for reference
 # x = 2024, y = 2025, if x = y NDVI has not changed within the time period
@@ -116,7 +117,7 @@ plot(ndvi24, ndvi25, xlim=c(-0.3,0.9), ylim=c(-0.3, 0.9), ylab="June 2025", xlab
 abline(0, 1, col="#6600ff", lwd=2)                                                               # bisector
 dev.off()
 
----
+#---
 # Using the other set of images, showing sulfur dioxide emission, it is possible to calculate the different quantity of product considering only one band
 # It is possible to see the sulfur dioxide plume of the year 2024 in darker colors and with the brighter colors this years plume.
 # Both plumes' spreading are affected by the presence or absence of the wind, in fact they do not follow the same path
@@ -141,8 +142,7 @@ var = sd^2
 p4 = im.ggplot(var)
 p0+p1+p2+p4                                     # using package "patchwork", plotting the graphics one beside the other
 
-# classificazione per intensità SO2 se ci riesco tipo sole
-#
+# Classification by intensity of sulfur dioxide plume
 so2d24c = im.classify(so2d24, num_clusters=4)
 so2d25c = im.classify(so2d25, num_clusters=4)
 
@@ -160,12 +160,35 @@ plot(so2d25)
 plot(so2d25c)
 
 # Making a correct legend
-so2d24cs=subst(so2d24c, c(3,2,4,1), c("01_low","02_medium-low","03_medium-high", "04_high"))
-so2d25cs=subst(so2d25c, c(2,1,3,4), c("01_low","02_medium-low","03_medium-high", "04_high"))
+so2d24cs = subst(so2d24c, c(3,2,4,1), c("01_low","02_medium-low","03_medium-high", "04_high"))
+so2d25cs = subst(so2d25c, c(2,1,3,4), c("01_low","02_medium-low","03_medium-high", "04_high"))
 im.multiframe(1,2)
 plot(so2d24cs)
 plot(so2d25cs)
----
+
+#
+perc24 = freq(so2d24cs)$count*100/ncell(so2d24cs) #  95.3326461  2.7109013  1.0474537  0.9089988
+perc25 = freq(so2d25cs)$count*100/ncell(so2d25cs) # 92.1956742  6.7387876  0.7452257  0.3203125
+
+# Create dataframe with all the new data
+class = c("01_low","02_medium-low","03_medium-high", "04_high")
+perc_24 = c(95.33,2.71,1.04,0.91)
+perc_25 = c(92.20,6.74,0.74,0.32)
+tabso2 = data.frame(class, perc_24, perc_25)
+
+# Making a ggplot graph
+gso24 = ggplot(tabso2, aes(x=class, y=perc_24, fill=class, color=class)) + 
+     geom_bar(stat="identity") +
+     ggtitle("Percentage year 2024") +
+     ylim(c(0,100))
+gso25 = ggplot(tabso2, aes(x=class, y=perc_25, fill=class, color=class)) + 
+     geom_bar(stat="identity") +
+     ggtitle("Percentage year 2025") +
+     ylim(c(0,100))
+
+gso24+gso25
+
+#---
 # Creating collages with graphics with results and images for markdown script
 # NDVI
 pdf("ndviout.pdf")
@@ -178,13 +201,17 @@ abline(0, 1, col="#6600ff", lwd=2)
 dev.off()
 
 # Sulfur dioxide classification
-png("class_24.png")
-im.multiframe(2,1)
+png("class_24.png", width=700, height=400)  # with "width" and "height", the image can be resized
 plot(so2d24cs)
+dev.off()
+png("class_25.png", width=700, height=400)
 plot(so2d25cs)
 dev.off()
+png("graphs_so2.png",width=1000, height=700)
+gso24+gso25
+dev.off()
 
----
+#---
 # Function that assigns an image to a variable, flips it and plots it, to speed up the process
 flot <- function(x,y){
   x = rast(y)  # creates a variable that contains the image
