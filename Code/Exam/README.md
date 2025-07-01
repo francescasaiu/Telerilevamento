@@ -38,6 +38,7 @@ During the eruptions Mt. Etna looks like theese two images in true colors:
 
 
 <img src = "../../Pics/class_24.png"/>
+<img src = "../../Pics/class_25.png"/>
 
 
 
