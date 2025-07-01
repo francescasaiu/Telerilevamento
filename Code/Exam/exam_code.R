@@ -146,15 +146,25 @@ p0+p1+p2+p4                                     # using package "patchwork", plo
 so2d24c = im.classify(so2d24, num_clusters=4)
 so2d25c = im.classify(so2d25, num_clusters=4)
 
-#
+# 2024             2025
+# 1 = high         4 = high
+# 4 = medium-high  3 = medium-high
+# 2 = medium-low   1 = medium-low
+# 3 = low          2 = low
+
+# Plotting normal and classified images together to compare
 im.multiframe(2,2)
 plot(so2d24)
 plot(so2d24c)
 plot(so2d25)
 plot(so2d25c)
 
-#
-
+# Making a correct legend
+so2d24cs=subst(so2d24c, c(3,2,4,1), c("01_low","02_medium-low","03_medium-high", "04_high"))
+so2d25cs=subst(so2d25c, c(2,1,3,4), c("01_low","02_medium-low","03_medium-high", "04_high"))
+im.multiframe(1,2)
+plot(so2d24cs)
+plot(so2d25cs)
 ---
 # Creating collages with graphics with results and images for markdown script
 # NDVI
@@ -165,6 +175,13 @@ plot(dvi25, col=cividis(100))
 plot(ndvidiff, col=cividis(100))
 plot(ndvi24, ndvi25, xlim=c(-0.3,0.9), ylim=c(-0.3, 0.9), ylab="June 2025", xlab="August 2024")
 abline(0, 1, col="#6600ff", lwd=2)
+dev.off()
+
+# Sulfur dioxide classification
+png("class_24.png")
+im.multiframe(2,1)
+plot(so2d24cs)
+plot(so2d25cs)
 dev.off()
 
 ---
