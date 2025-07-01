@@ -35,3 +35,11 @@ This image shows Italy in a typical setting, without eruptions:
 During the eruptions Mt. Etna looks like theese two images in true colors:
 
 <img src = "../../Pics/Mount_Etna_plumes.jpg" width = 50%/><img src = "../../Pics/Mount_Etna_erupts.jpg" width = 50%/>
+
+
+<img src = "../../Pics/class_24.png"/>
+
+<img src = "../../Pics/class_24.pdf"/>
+
+
+
