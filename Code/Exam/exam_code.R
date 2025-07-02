@@ -201,9 +201,7 @@ gso24+gso25
 # Creating collages with graphics with results and images for markdown script
 # Downloaded images
 png("images.png", width=1000, height=800)                   # width and height are used to resize the image
-im.multiframe(4,2)
-im.plotRGB(et24, r=1, g=2, b=3, title="4 August 2024")
-im.plotRGB(et25, r=1, g=2, b=3, title="2 June 2025")
+im.multiframe(3,2)
 im.plotRGB(fc24, r=1, g=2, b=3, title="9 August 2024")
 im.plotRGB(fc25, r=1, g=2, b=3, title="31 May 2025")
 im.plotRGB(so2d24, r=1, g=2, b=3, title="4 August 2024")
