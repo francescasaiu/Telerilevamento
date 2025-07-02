@@ -150,7 +150,7 @@ p3 = im.ggplot(var)                            # plotting vat with a ggplot grap
 p0+p1+p2+p3                                    # using package "patchwork", plotting all the graphics one beside the other
 
 #---
-# Unsupervised classification by intensity of sulfur dioxide plume
+# Unsupervised classification by concentration of sulfur dioxide plume
 so2d24c = im.classify(so2d24, num_clusters=4)
 so2d25c = im.classify(so2d25, num_clusters=4)
 
