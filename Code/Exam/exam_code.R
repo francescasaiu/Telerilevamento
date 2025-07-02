@@ -2,10 +2,10 @@
 
 # Packages
 library(terra)      # for spatial data analysis
-library(imageRy)    # to analyze raster images with R
+library(imageRy)    # to analyse raster images with R
 library(viridis)    # useful for changing color ramp palette
-library(patchwork)  #
-library(ggplot2)    #
+library(patchwork)  # adds ggplot grphics together to compose multiplot layouts
+library(ggplot2)    # creates data visualizations with grammar of graphics
 
 # Setting the working directory
 setwd("C:/Users/fsaiu/UNI/MAGISTRALE/TELERILEVAMENTO")
@@ -147,10 +147,10 @@ p1 = im.ggplot(sd24)
 p2 = im.ggplot(sd25)
 p3 = im.ggplot(var)                            # plotting vat with a ggplot graphic
 
-p0+p1+p2+p3                                   # using package "patchwork", plotting all the graphics one beside the other
+p0+p1+p2+p3                                    # using package "patchwork", plotting all the graphics one beside the other
 
 #---
-# Classification by intensity of sulfur dioxide plume
+# Unsupervised classification by intensity of sulfur dioxide plume
 so2d24c = im.classify(so2d24, num_clusters=4)
 so2d25c = im.classify(so2d25, num_clusters=4)
 
@@ -175,7 +175,7 @@ im.multiframe(1,2)
 plot(so2d24cs)
 plot(so2d25cs)
 
-#
+# Calculating the percentages of sulfur dioxide concentration classes of both years
 perc24 = freq(so2d24cs)$count*100/ncell(so2d24cs) #  95.3326461  2.7109013  1.0474537  0.9089988
 perc25 = freq(so2d25cs)$count*100/ncell(so2d25cs) # 92.1956742  6.7387876  0.7452257  0.3203125
 
@@ -200,7 +200,7 @@ gso24+gso25
 #---
 # Creating collages with graphics with results and images for markdown script
 # NDVI
-pdf("ndviout.pdf")
+png("ndviout.png", width=1000, height=800)   # width and height are used to resize the image
 im.multiframe(2,2)
 plot(ndvi24, col=cividis(100))
 plot(dvi25, col=cividis(100))
