@@ -41,7 +41,7 @@ During the eruptions Mt. Etna looks like theese two images in true colors:
 <img src = "../../Pics/class_25.png"/>
 
 ![ndviout](ndviout.pdf)
-https://stackoverflow.com/questions/39777166/display-pdf-image-in-markdown
+<embed src="../../Pics/ndviout.pdf"/>
 
 
 
