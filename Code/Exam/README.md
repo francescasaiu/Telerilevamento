@@ -92,7 +92,7 @@ The output illustrates in the first row the results of NDVI calculation (respect
 <img src = "../../Pics/ndviout.png"/>
 
 ### Sulfur dioxide emisson
-
+Assessing sulfur dioxide concentration is fundamental during an eruption. The main reasons are volcanic monitoring, environmental impact, effects on the climate and human health.
 
 
 <img src = "../../Pics/class_24.png" width = 50%/><img src = "../../Pics/class_25.png" width = 50%/>
