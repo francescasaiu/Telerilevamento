@@ -56,7 +56,10 @@ dvi25 = fc25[[1]] - fc25[[2]] # NIR - red
 ```
 
 Plotting them side to side it can be recognised the difference between spring and summer:
-<img src = "../../Pics/dvicomp.png"/>
+
+<img src = "../../Pics/dvi24.png" width = 50%/><img src = "../../Pics/dvi25.png" width = 50%/>
+
+As told before it is observable that in the second image the lighter color is more dominant, confirming a denser and healthier vegetation, in contrast with the first picture that mostly shows darker shades.
 
 <img src = "../../Pics/class_24.png" width = 50%/><img src = "../../Pics/class_25.png" width = 50%/>
 
