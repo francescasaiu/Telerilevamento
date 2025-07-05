@@ -211,7 +211,7 @@ im.plotRGB(so2.25, r=1, g=2, b=3, title="2 June 2025")
 dev.off()
 
 # NDVI
-png("dvicomp.png", width=1000, height=800)
+png("dvicomp.png", width=700, height=400)
 im.multiframe(1,2)
 plot(dvi24, col=cividis(100))
 plot(dvi25, col=cividis(100))
