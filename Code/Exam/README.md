@@ -51,6 +51,7 @@ From true color images it is noticeable that between August 2024 and June 2025, 
 ``` r
 # Calculating dvi for year 2024
 dvi24 = fc24[[1]] - fc24[[2]] # NIR - red
+
 # Calculating dvi for year 2025
 dvi25 = fc25[[1]] - fc25[[2]] # NIR - red
 ```
@@ -60,6 +61,39 @@ Plotting them side to side it can be recognised the difference between spring an
 <img src = "../../Pics/dvi24.png" width = 50%/><img src = "../../Pics/dvi25.png" width = 50%/>
 
 As told before it is observable that in the second image the lighter color is more dominant, confirming a denser and healthier vegetation, in contrast with the first picture that mostly shows darker shades.
+
+The estimation of Normal Difference Vegetation Index is the final aim, it assesses vegetation health by measuring the ratio between the difference of NIR and red (DVI) and their sum, using R coding:
+
+``` r
+# Calculating NDVI for year 2024
+ndvi24 = dvi24 / (fc24[[1]] + fc24[[2]])
+
+# Calculating NDVI for year 2025
+ndvi25 = dvi25 / (fc25[[1]] + fc25[[2]])
+```
+Now, with theese new variables, it is possible to calculate the difference between the two indices, visible in image number one, second row, here below. In colors close to yellow it is observable the positive outcome, which implicates a higher NDVI value and so the presence of new vegetation in a former dry area.
+
+To analitically compare NDVI values between the two dates, results are plotted in a cartesian graph and it is added a bisector for reference, if the points lay on it the NDVI has not change within the time period. All values above the bisector indicate an improvement of vegetation wellness, all below instead show worsening conditions. In this case the majority of data is located upon the line and that means that the vegetation is more lush and dense than 2024, as per above.
+
+The code will look like this:
+
+``` r
+# Calculating the difference between the two NDVI, 2025-2024
+ndvidiff = ndvi25 - ndvi24
+
+# Plotting the results
+plot(ndvi24, ndvi25, xlim=c(-0.3,0.9), ylim=c(-0.3, 0.9), ylab="June 2025", xlab="August 2024")  # graph
+abline(0, 1, col="#6600ff", lwd=2)                                                               # bisector
+dev.off()
+```
+
+The output illustrates in the first row the results of NDVI calculation (respectively 2024 and 2025), in the second row the difference of those indices and the graphic extrapolated:
+
+<img src = "../../Pics/ndviout.png"/>
+
+### Sulfur dioxide emisson
+
+
 
 <img src = "../../Pics/class_24.png" width = 50%/><img src = "../../Pics/class_25.png" width = 50%/>
 
