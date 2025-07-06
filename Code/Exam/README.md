@@ -100,7 +100,7 @@ Assessing sulfur dioxide concentration is fundamental during, before and after a
 <img src = "../../Pics/SO2-2024.jpg" width = 50%/><img src = "../../Pics/SO2-2025.jpg" width = 50%/>
 
 
-Using the last set of photos, up here, show sulfur dioxide emission, it will be estimated the varying quantity of product considering only one band, the first one. Taking a look at the images it is possible to see that the sulfur dioxide plume of year 2024 was spreading much more than this years plume. That is because both plumes' spreading are affected by the presence or absence of the wind, indeed they do not follow the same path, meaning different settings on wind conditions.
+Using the set of photos above, which show sulfur dioxide emissions, the varying quantity of the product will be estimated by considering only one band, the first one. Taking a look at the images it is possible to see that the sulfur dioxide plume of year 2024 was spreading much more than this year's plume. That is because both plumes' spreading are affected by the presence or absence of the wind, indeed they do not follow the same path, meaning different settings on wind conditions.
 The difference is calculated like this:
 
 ``` r
@@ -114,8 +114,7 @@ sd = focal(so2d, w=c(3,3), fun="sd")            # standard deviation (sd) with 3
 sd24 = focal(so2.24[[1]], w=c(3,3), fun="sd")
 sd25 = focal(so2.25[[1]], w=c(3,3), fun="sd")
 ```
-
-From standard deviation should be easy to evaluate the variance index, sum of the square deviations divided by the number of deviations:
+This approach allows the determination of either the total standard deviation and those within the data from both years. From total standard deviation should be easy to evaluate the variance index, sum of the square deviations divided by the number of deviations or standard deviation to the second:
 
 ``` r
 var = sd^2
@@ -140,8 +139,11 @@ p0+p1+p2+p3                                    # using package "patchwork", plot
 
 The result will look like this below:
 
-<img src = "../../Pics/graphs_so2.png"/>
+<img src = "../../Pics/sd_var_so2.png"/>
 
+Since both indicators measure data dispersion, a similarity in the graphics is expected. However, the standard deviation more clearly highlights that the greatest disparities occur at the edges of the plumes, as indicated by the high values marked in yellow-green shades. 
+
+As last analysis, 
 
 <img src = "../../Pics/class_24.png" width = 50%/><img src = "../../Pics/class_25.png" width = 50%/>
 
