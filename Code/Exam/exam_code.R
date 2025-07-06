@@ -4,7 +4,7 @@
 library(terra)      # for spatial data analysis
 library(imageRy)    # to analyse raster images with R
 library(viridis)    # useful for changing color ramp palette
-library(patchwork)  # adds ggplot grphics together to compose multiplot layouts
+library(patchwork)  # adds ggplot graphics together to compose multiplot layouts
 library(ggplot2)    # creates data visualizations with grammar of graphics
 
 # Setting the working directory
