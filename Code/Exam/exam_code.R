@@ -203,10 +203,10 @@ png("images.png", width=1000, height=800)                   # width and height a
 im.multiframe(3,2)
 im.plotRGB(fc24, r=1, g=2, b=3, title="9 August 2024")
 im.plotRGB(fc25, r=1, g=2, b=3, title="31 May 2025")
-im.plotRGB(so2d24, r=1, g=2, b=3, title="4 August 2024")
-im.plotRGB(so2d25, r=1, g=2, b=3, title="2 June 2025")
 im.plotRGB(so2.24, r=1, g=2, b=3, title="4 August 2024")
 im.plotRGB(so2.25, r=1, g=2, b=3, title="2 June 2025")
+im.plotRGB(so2d24, r=1, g=2, b=3, title="4 August 2024")
+im.plotRGB(so2d25, r=1, g=2, b=3, title="2 June 2025")
 dev.off()
 
 # NDVI
