@@ -144,7 +144,7 @@ names(var)="Total variance"
 p0 = im.ggplot(sd)                             # plotting sd with a ggplot graphic
 p1 = im.ggplot(sd24)
 p2 = im.ggplot(sd25)
-p3 = im.ggplot(var)                            # plotting vat with a ggplot graphic
+p3 = im.ggplot(var)                            # plotting var with a ggplot graphic
 
 p0+p1+p2+p3                                    # using package "patchwork", plotting all the graphics one beside the other
 
