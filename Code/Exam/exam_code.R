@@ -119,7 +119,6 @@ dev.off()
 
 #---
 # Using the other set of images, showing sulfur dioxide emission, it is possible to calculate the different quantity of product considering only one band
-# It is possible to see the sulfur dioxide plume of the year 2024 in darker colors and with the brighter colors this years plume.
 # Both plumes' spreading are affected by the presence or absence of the wind, in fact they do not follow the same path
 so2d = so2.25[[1]] - so2.24[[1]]
 im.multiframe(2,2)
@@ -142,7 +141,7 @@ names(sd24)="Standard deviation year 2024"
 names(sd25)="Standard deviation year 2025"
 names(var)="Total variance"
 
-p0 = im.ggplot(sd)                              # plotting sd with a ggplot graphic
+p0 = im.ggplot(sd)                             # plotting sd with a ggplot graphic
 p1 = im.ggplot(sd24)
 p2 = im.ggplot(sd25)
 p3 = im.ggplot(var)                            # plotting vat with a ggplot graphic
