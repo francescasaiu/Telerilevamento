@@ -60,7 +60,7 @@ dev.off()
 This script, for example, produced the last picture of the previous chapter.
 > As before the other outputs are created with the same process.
 
-## Data analisys 
+## Data analysis 
 
 ### Difference Vegetation Index (DVI)
 It is an index used in remote sensing to analyse the health of vegetation through satellite images. It is calculated from reflectance values in spectral bands, more specifically in Near InfraRed (NIR), invisible, and in the Red band, visible to the human eye. Healthy plants reflect a lot in NIR band and absorb a large amount of red light due to photosynthesis, meanwhile stressed vegetation reflects less NIR light and also reflects red one, because of its lack of chlorophyll, thanks to this behaviour it is possible to have direct information on vegetation health status. DVI is very simple to estimate and useful to derive the normalised index, NDVI, indipendent from light intensity and atmospheric conditions and included in a range between -1 and +1.
