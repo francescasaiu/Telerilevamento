@@ -118,11 +118,11 @@ Assessing sulfur dioxide concentration is fundamental during, before and after a
 <img src = "../../Pics/SO2-2024.jpg" width = 50%/><img src = "../../Pics/SO2-2025.jpg" width = 50%/>
 
 
-Using the set of photos above, which show sulfur dioxide emissions, the varying quantity of the product will be estimated by considering only one band, the first one. Taking a look at the images it is possible to see that the sulfur dioxide plume of year 2024 was spreading much more than this year's plume. That is because both plumes' spreading are affected by the presence or absence of the wind, indeed they do not follow the same path, meaning different settings on wind conditions.
-The difference is calculated like this:
+Using the set of photos above, which show sulfur dioxide emissions, the varying quantity of the product will be estimated by considering only one band, the first one. Taking a look at the images it is possible to see that the sulfur dioxide plume of year 2024 was spreading much more than this year's plume. That is because both plumes' spreading are affected by the presence or absence of the wind, indeed they do not follow the same path, meaning different settings on wind conditions. Moreover, due to wind influence, significant deviations in concentration are expected near the edges.
+The first thing to do is sum the layers of both years in one variable:
 
 ``` r
-so2d = so2.25[[1]] - so2.24[[1]]
+so2d = so2.25[[1]] + so2.24[[1]]
 ```
 
 Then, the extent to which the values deviate from their average can be extrapolated using the latter variable:
