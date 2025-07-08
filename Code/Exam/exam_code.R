@@ -118,13 +118,13 @@ abline(0, 1, col="#6600ff", lwd=2)                                              
 dev.off()
 
 #---
-# Using the other set of images, showing sulfur dioxide emission, it is possible to calculate the different quantity of product considering only one band
+# Using the other set of images, showing sulfur dioxide emission, it is possible to calculate the different quantity of product concentration considering only one band
 # Both plumes' spreading are affected by the presence or absence of the wind, in fact they do not follow the same path
-so2d = so2.25[[1]] - so2.24[[1]]
+so2d = so2.25[[1]] + so2.24[[1]]
 im.multiframe(2,2)
-plot(so2.24, col=cividis(100))
-plot(so2.25, col=cividis(100))
-plot(so2d, col=cividis(100))
+plot(so2.24)
+plot(so2.25)
+plot(so2d)
 dev.off()
 
 # Calculating how far the values deviate from their average using the latter variable
